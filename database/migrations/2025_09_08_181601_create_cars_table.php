@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
-            $table->id();
-            $table->string('brand');
-            $table->string('model')->nullable();
-            $table->string('year')->nullable();
-            $table->string('price')->nullable();
-            $table->string('url')->unique(); // no pitona scrappera lai nav dublikatu
-            $table->timestamps();
-        });
+    Schema::create('cars', function (Blueprint $table) {
+        $table->id();
+        $table->string('title');
+        $table->string('year')->nullable();
+        $table->string('engine_size')->nullable();
+        $table->string('mileage')->nullable();
+        $table->string('price')->nullable();
+        $table->string('url')->unique();
+        $table->timestamps();
+    });
     }
 
     public function down(): void
