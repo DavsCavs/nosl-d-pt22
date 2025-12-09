@@ -9,6 +9,7 @@
         @foreach($cars as $car)
             <div class="bg-white/10 backdrop-blur-md rounded-xl shadow-md p-4 hover:shadow-lg transition">
                 <h3 class="text-xl font-bold mb-2">{{ $car->title }}</h3>
+                <p><strong>Marka:</strong> {{ $car->brand }}</p>
                 <p><strong>Gads:</strong> {{ $car->year }}</p>
                 <p><strong>Motors:</strong> {{ $car->engine_size }}</p>
                 <p><strong>Nobraukums:</strong> {{ $car->mileage }}</p>

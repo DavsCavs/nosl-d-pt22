@@ -13,7 +13,7 @@
         <form action="{{ route('cars.index') }}" method="GET" class="space-y-4">
             {{-- Vienkāršota meklēšana – pietiek ar vienu lauku --}}
             <div class="grid grid-cols-1">
-                <input type="text" name="query" placeholder="Meklēt (piem., BMW 730 vai 5000€)"
+                <input type="text" name="search" placeholder="Meklēt (piem., BMW 730 vai 5000€)"
                     class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-800 focus:ring focus:ring-blue-300" />
             </div>
 

@@ -24,7 +24,7 @@
 
     {{-- Navigācija --}}
     <nav class="bg-white/10 backdrop-blur-md shadow-md p-4 flex justify-between items-center">
-        <a href="/" class="text-white font-bold text-xl">🚗 Auto Meklētājs</a>
+        <a href="/" class="text-white font-bold text-xl">My Baltic Car</a>
         <a href="{{ route('cars.index') }}" class="text-gray-200 hover:text-white">Visi auto</a>
     </nav>
 
@@ -35,7 +35,7 @@
 
     {{-- Footer --}}
     <footer class="bg-white/10 backdrop-blur-md p-4 text-center text-sm text-gray-300">
-        © {{ date('Y') }} Auto Marketplace — Skolas projekts
+        © {{ date('Y') }} My Baltic Car
     </footer>
 
 </body>
