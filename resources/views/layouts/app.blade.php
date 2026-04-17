@@ -28,7 +28,7 @@
 </head>
 <body class="font-sans text-gray-100 flex flex-col min-h-screen">
 
-    <nav class="bg-black/25 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+    <nav class="bg-blue-900 border-b border-blue-800 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2">
@@ -60,7 +60,7 @@
         @yield('content')
     </main>
 
-    <footer class="bg-black/25 backdrop-blur-md border-t border-white/10 py-8 mt-8">
+    <footer class="bg-blue-900 border-t border-blue-800 py-8 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-400 text-sm">
                 © {{ date('Y') }} My Baltic Car
