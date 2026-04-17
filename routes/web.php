@@ -8,4 +8,5 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
