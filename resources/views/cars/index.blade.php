@@ -79,52 +79,71 @@
             </a>
         </div>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($cars as $car)
-                <div class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-5 card-hover flex flex-col">
+                <div class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 card-hover flex flex-col overflow-hidden">
 
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="bg-blue-600/50 text-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full">
-                            {{ $car->brand }}
-                        </span>
-                        @if($car->year)
-                            <span class="text-gray-400 text-xs">{{ $car->year }}</span>
-                        @endif
-                    </div>
+                    {{-- Car image --}}
+                    @if($car->image_url)
+                        <img src="{{ $car->image_url }}" alt="{{ $car->brand }} {{ $car->model }}"
+                            class="w-full h-48 object-cover">
+                    @else
+                        <div class="w-full h-48 bg-gradient-to-br from-blue-900/60 to-blue-700/40 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-blue-300/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h10z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                    d="M16 16l2-8h2l2 8"/>
+                            </svg>
+                        </div>
+                    @endif
 
-                    <h3 class="text-lg font-bold text-white mb-3">
-                        {{ $car->brand }} {{ $car->model }}
-                    </h3>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="bg-blue-600/50 text-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full">
+                                {{ $car->brand }}
+                            </span>
+                            @if($car->year)
+                                <span class="text-gray-400 text-xs">{{ $car->year }}</span>
+                            @endif
+                        </div>
 
-                    <div class="space-y-2 flex-grow text-sm">
-                        @if($car->engine_size)
-                            <div class="flex items-center space-x-2 text-gray-300">
-                                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                                </svg>
-                                <span>{{ $car->engine_size }}</span>
-                            </div>
-                        @endif
-                        @if($car->mileage)
-                            <div class="flex items-center space-x-2 text-gray-300">
-                                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                </svg>
-                                <span>{{ number_format($car->mileage) }} km</span>
-                            </div>
-                        @endif
-                    </div>
+                        <h3 class="text-lg font-bold text-white mb-3">
+                            {{ $car->brand }} {{ $car->model }}
+                        </h3>
 
-                    <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
-                        <span class="text-xl font-bold text-green-400">
-                            {{ $car->price ? '€ ' . number_format($car->price) : '—' }}
-                        </span>
-                        <a href="{{ route('cars.show', $car->id) }}"
-                            class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition">
-                            Skatīt
-                        </a>
+                        <div class="space-y-2 flex-grow text-sm">
+                            @if($car->engine_size)
+                                <div class="flex items-center space-x-2 text-gray-300">
+                                    <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                                    </svg>
+                                    <span>{{ $car->engine_size }}</span>
+                                </div>
+                            @endif
+                            @if($car->mileage)
+                                <div class="flex items-center space-x-2 text-gray-300">
+                                    <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                    <span>{{ number_format($car->mileage) }} km</span>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+                            <span class="text-xl font-bold text-green-400">
+                                {{ $car->price ? '€ ' . number_format($car->price) : '—' }}
+                            </span>
+                            <a href="{{ route('cars.show', $car->id) }}"
+                                class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition">
+                                Skatīt
+                            </a>
+                        </div>
                     </div>
                 </div>
             @endforeach
