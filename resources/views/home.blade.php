@@ -24,7 +24,7 @@
                 <label class="block text-sm font-medium text-gray-300 mb-2">Vispārīgā meklēšana</label>
                 <input type="text" name="search" value="{{ old('search') }}"
                     placeholder="Meklēt (piem., BMW, Corolla, 2020...)"
-                    class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-gray-400
+                    class="w-full px-4 py-3 rounded-xl bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
             </div>
 
@@ -33,14 +33,14 @@
                     <label class="block text-sm font-medium text-gray-300 mb-2">Marka</label>
                     <input type="text" name="brand" value="{{ old('brand') }}"
                         placeholder="BMW, Toyota..."
-                        class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                        class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Modelis</label>
                     <input type="text" name="model" value="{{ old('model') }}"
                         placeholder="X5, Corolla..."
-                        class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                        class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 </div>
                 <div class="col-span-2 md:col-span-1 grid grid-cols-2 gap-3">
@@ -48,14 +48,14 @@
                         <label class="block text-sm font-medium text-gray-300 mb-2">Gads no</label>
                         <input type="number" name="year_from" value="{{ old('year_from') }}"
                             placeholder="2000" min="1900" max="2025"
-                            class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                            class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                    focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-300 mb-2">Gads līdz</label>
                         <input type="number" name="year_to" value="{{ old('year_to') }}"
                             placeholder="2025" min="1900" max="2025"
-                            class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                            class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                    focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                     </div>
                 </div>
@@ -66,14 +66,14 @@
                     <label class="block text-sm font-medium text-gray-300 mb-2">Cena no (€)</label>
                     <input type="number" name="price_from" value="{{ old('price_from') }}"
                         placeholder="500" min="0"
-                        class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                        class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-2">Cena līdz (€)</label>
                     <input type="number" name="price_to" value="{{ old('price_to') }}"
                         placeholder="30000" min="0"
-                        class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                        class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 </div>
             </div>

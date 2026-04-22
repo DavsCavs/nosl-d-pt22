@@ -8,28 +8,36 @@
     {{-- Filter bar --}}
     <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 mb-6 border border-white/20">
         <form action="{{ route('cars.index') }}" method="GET">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-3">
-                <div class="col-span-2 lg:col-span-2">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 mb-3">
+                <div class="col-span-2">
                     <input type="text" name="search" value="{{ $search ?? '' }}"
                         placeholder="Vispārīgā meklēšana..."
-                        class="w-full px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                        class="w-full px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                                focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 </div>
                 <input type="text" name="brand" value="{{ request('brand') }}"
                     placeholder="Marka"
-                    class="px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 <input type="text" name="model" value="{{ request('model') }}"
                     placeholder="Modelis"
-                    class="px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 <input type="number" name="price_from" value="{{ request('price_from') }}"
                     placeholder="Cena no €"
-                    class="px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
                 <input type="number" name="price_to" value="{{ request('price_to') }}"
                     placeholder="Cena līdz €"
-                    class="px-3 py-2 rounded-lg bg-white/10 border border-white/30 text-white placeholder-gray-400
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
+                <input type="number" name="year_from" value="{{ request('year_from') }}"
+                    placeholder="Gads no" min="1900" max="2025"
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
+                           focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
+                <input type="number" name="year_to" value="{{ request('year_to') }}"
+                    placeholder="Gads līdz" min="1900" max="2025"
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
             </div>
             <div class="flex gap-3">
