@@ -16,6 +16,19 @@ class CarController extends Controller{
         $yearTo    = $request->input('year_to');
         $priceFrom = $request->input('price_from');
         $priceTo   = $request->input('price_to');
+        $sort      = $request->input('sort', 'newest');
+
+        $sortOptions = [
+            'newest'          => ['created_at', 'desc'],
+            'price_asc'       => ['price',      'asc'],
+            'price_desc'      => ['price',      'desc'],
+            'mileage_asc'     => ['mileage',    'asc'],
+            'mileage_desc'    => ['mileage',    'desc'],
+            'year_desc'       => ['year',       'desc'],
+            'year_asc'        => ['year',       'asc'],
+        ];
+
+        [$sortColumn, $sortDirection] = $sortOptions[$sort] ?? $sortOptions['newest'];
 
         $cars = Car::query()
             ->when($search, function ($q) use ($search) {
@@ -33,10 +46,10 @@ class CarController extends Controller{
             ->when($yearTo,    fn($q) => $q->where('year', '<=', $yearTo))
             ->when($priceFrom, fn($q) => $q->where('price', '>=', $priceFrom))
             ->when($priceTo,   fn($q) => $q->where('price', '<=', $priceTo))
-            ->latest()
+            ->orderBy($sortColumn, $sortDirection)
             ->paginate(20);
 
-        return view('cars.index', compact('cars', 'search'));
+        return view('cars.index', compact('cars', 'search', 'sort'));
     }
 
     public function show($id)

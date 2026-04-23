@@ -40,7 +40,7 @@
                     class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400
                            focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
             </div>
-            <div class="flex gap-3">
+            <div class="flex gap-3 flex-wrap items-center">
                 <button type="submit"
                     class="px-5 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition
                            flex items-center space-x-2">
@@ -55,6 +55,17 @@
                            transition border border-white/30">
                     Notīrīt
                 </a>
+                <select name="sort"
+                    class="ml-auto px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm
+                           focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <option value="newest"       {{ $sort === 'newest'       ? 'selected' : '' }}>Jaunākie</option>
+                    <option value="price_asc"    {{ $sort === 'price_asc'    ? 'selected' : '' }}>Cena: augošā</option>
+                    <option value="price_desc"   {{ $sort === 'price_desc'   ? 'selected' : '' }}>Cena: dilstošā</option>
+                    <option value="mileage_asc"  {{ $sort === 'mileage_asc'  ? 'selected' : '' }}>Nobraukums: augošā</option>
+                    <option value="mileage_desc" {{ $sort === 'mileage_desc' ? 'selected' : '' }}>Nobraukums: dilstošā</option>
+                    <option value="year_desc"    {{ $sort === 'year_desc'    ? 'selected' : '' }}>Gads: jaunākie</option>
+                    <option value="year_asc"     {{ $sort === 'year_asc'     ? 'selected' : '' }}>Gads: vecākie</option>
+                </select>
             </div>
         </form>
     </div>
