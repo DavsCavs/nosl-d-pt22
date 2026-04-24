@@ -57,6 +57,12 @@
         {{-- Details grid --}}
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
             <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Valsts</div>
+                <div class="text-gray-900 font-medium">
+                    {{ $car->country === 'EE' ? '🇪🇪 Igaunija' : '🇱🇻 Latvija' }}
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
                 <div class="text-xs text-gray-400 uppercase tracking-wider mb-1">Marka</div>
                 <div class="text-gray-900 font-medium">{{ $car->brand }}</div>
             </div>

@@ -55,6 +55,13 @@
                            transition border border-white/30">
                     Notīrīt
                 </a>
+                <select name="country"
+                    class="px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm
+                           focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <option value=""   {{ ($country ?? '') === ''   ? 'selected' : '' }}>Visas valstis</option>
+                    <option value="LV" {{ ($country ?? '') === 'LV' ? 'selected' : '' }}>🇱🇻 Latvija</option>
+                    <option value="EE" {{ ($country ?? '') === 'EE' ? 'selected' : '' }}>🇪🇪 Igaunija</option>
+                </select>
                 <select name="sort"
                     class="ml-auto px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm
                            focus:outline-none focus:ring-2 focus:ring-blue-400">
@@ -124,9 +131,14 @@
                             <span class="bg-blue-600/50 text-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full">
                                 {{ $car->brand }}
                             </span>
-                            @if($car->year)
-                                <span class="text-gray-400 text-xs">{{ $car->year }}</span>
-                            @endif
+                            <div class="flex items-center gap-2">
+                                <span class="text-sm" title="{{ $car->country === 'EE' ? 'Estonia' : 'Latvia' }}">
+                                    {{ $car->country === 'EE' ? '🇪🇪' : '🇱🇻' }}
+                                </span>
+                                @if($car->year)
+                                    <span class="text-gray-400 text-xs">{{ $car->year }}</span>
+                                @endif
+                            </div>
                         </div>
 
                         <h3 class="text-lg font-bold text-white mb-3">

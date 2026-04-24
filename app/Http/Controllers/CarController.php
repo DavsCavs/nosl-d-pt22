@@ -16,6 +16,7 @@ class CarController extends Controller{
         $yearTo    = $request->input('year_to');
         $priceFrom = $request->input('price_from');
         $priceTo   = $request->input('price_to');
+        $country   = $request->input('country');
         $sort      = $request->input('sort', 'newest');
 
         $sortOptions = [
@@ -46,10 +47,11 @@ class CarController extends Controller{
             ->when($yearTo,    fn($q) => $q->where('year', '<=', $yearTo))
             ->when($priceFrom, fn($q) => $q->where('price', '>=', $priceFrom))
             ->when($priceTo,   fn($q) => $q->where('price', '<=', $priceTo))
+            ->when($country,   fn($q) => $q->where('country', $country))
             ->orderBy($sortColumn, $sortDirection)
             ->paginate(20);
 
-        return view('cars.index', compact('cars', 'search', 'sort'));
+        return view('cars.index', compact('cars', 'search', 'sort', 'country'));
     }
 
     public function show($id)
