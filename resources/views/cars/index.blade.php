@@ -61,6 +61,7 @@
                     <option value=""   {{ ($country ?? '') === ''   ? 'selected' : '' }}>Visas valstis</option>
                     <option value="LV" {{ ($country ?? '') === 'LV' ? 'selected' : '' }}>🇱🇻 Latvija</option>
                     <option value="EE" {{ ($country ?? '') === 'EE' ? 'selected' : '' }}>🇪🇪 Igaunija</option>
+                    <option value="LT" {{ ($country ?? '') === 'LT' ? 'selected' : '' }}>🇱🇹 Lietuva</option>
                 </select>
                 <select name="sort"
                     class="ml-auto px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-900 text-sm
@@ -133,7 +134,10 @@
                             </span>
                             <div class="flex items-center gap-2">
                                 <span class="text-sm" title="{{ $car->country === 'EE' ? 'Estonia' : 'Latvia' }}">
-                                    {{ $car->country === 'EE' ? '🇪🇪' : '🇱🇻' }}
+                                    @if($car->country === 'EE') 🇪🇪
+                                    @elseif($car->country === 'LT') 🇱🇹
+                                    @else 🇱🇻
+                                    @endif
                                 </span>
                                 @if($car->year)
                                     <span class="text-gray-400 text-xs">{{ $car->year }}</span>
