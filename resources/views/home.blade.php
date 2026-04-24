@@ -11,7 +11,7 @@
             Atrodi savu ideālo auto
         </h1>
         <p class="text-xl text-blue-200 max-w-2xl mx-auto">
-            Visi lietoto auto sludinājumi no SS.com un citiem avotiem — vienā vietā.
+            Visi lietoto auto sludinājumi no SS.com (LV), Autoportaal (EE) un Autogidas (LT) — vienā vietā.
             Meklē pēc markas, modeļa, gada vai cenas.
         </p>
     </div>
@@ -100,12 +100,12 @@
     {{-- Stats --}}
     <div class="mt-14 grid grid-cols-3 gap-6 max-w-sm mx-auto text-center fade-in">
         <div>
-            <div class="text-3xl font-bold text-white">3+</div>
-            <div class="text-sm text-blue-300 mt-1">Avoti</div>
+            <div class="text-3xl font-bold text-white">3</div>
+            <div class="text-sm text-blue-300 mt-1">Valstis</div>
         </div>
         <div>
-            <div class="text-3xl font-bold text-white">24/7</div>
-            <div class="text-sm text-blue-300 mt-1">Atjaunošana</div>
+            <div class="text-3xl font-bold text-white">3</div>
+            <div class="text-sm text-blue-300 mt-1">Avoti</div>
         </div>
         <div>
             <div class="text-3xl font-bold text-white">100%</div>

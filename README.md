@@ -1,57 +1,97 @@
+# My Baltic Car
 
+A used car aggregator for the Baltic region. Aggregates listings from SS.com (Latvia), Autoportaal.ee (Estonia) and Autogidas.lt (Lithuania) into one searchable interface.
 
-## My Baltic Car
+**Problem it solves:** After getting a driver's license, young people in the Baltics often want to buy a car from a neighbouring country. There's no single site that shows listings from all three Baltic markets at once.
 
+---
 
-My project is a website where you can check active listings of used cars from Baltic's biggest used car marketplaces. Main problem my site solves, is that we young people usually after getting drivers license want to buy a car. And for us who lives in Baltic's there is no problem to drive and get our car in neighbor country.
+## Features
 
+- Browse used car listings from Latvia, Estonia and Lithuania in one place
+- Filter by brand, model, year range and price range
+- Filter by country (LV / EE / LT)
+- Sort by price, mileage or year
+- Detail page with link back to the original listing
 
+---
 
-### Table of contents
+## Tech Stack
 
+| Layer | Technology |
+|-------|-----------|
+| Backend | Laravel 11 (PHP) |
+| Frontend | Blade templates + Tailwind CSS v4 |
+| Database | MySQL |
+| Scraper | Python (see `/scraper`) |
 
-- Requirements
-- Features
-- Installation
-- Tech Stack
+---
 
+## Requirements
 
-
-### Requirements
-
-
-- PHP
+- PHP 8.2+
 - Composer
-- Laravel
-- MySql
+- Node.js + npm
+- MySQL
 
+---
 
+## Installation
 
-### Features
-
-
-Can view all active listing of used cars in Baltic
-Cars can be searched and sorted by make, model, year, engine size and sorted by price
-
-
-
-### Installation
-
-
-Clone the repository
+```bash
+# 1. Clone the repo
 git clone https://github.com/DavsCavs/nosl-d-pt22.git
 cd nosl-d-pt22
 
-Install PHP dependencies
+# 2. Install PHP dependencies
 composer install
 
-Set up environment variables
+# 3. Install JS dependencies and build assets
+npm install
+npm run build
+
+# 4. Set up environment
 cp .env.example .env
 php artisan key:generate
 
+# 5. Configure database in .env
+DB_DATABASE=sscarsdb
+DB_USERNAME=root
+DB_PASSWORD=
 
+# 6. Run migrations
+php artisan migrate
 
-### Tech Stack
+# 7. Start the dev server
+php artisan serve
+```
 
-Frontend: Laravel
-Backend: Python
+Then populate the database by running the scraper (see `/scraper/README.md`).
+
+---
+
+## Routes
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Home / search page |
+| GET | `/cars` | Listing with filters |
+| GET | `/cars/{id}` | Car detail page |
+
+---
+
+## Database
+
+Table: `cars`
+
+| Column | Type | Description |
+|--------|------|-------------|
+| brand | string | Car brand (e.g. BMW) |
+| model | string | Model name |
+| year | string | Year of manufacture |
+| engine_size | string | Engine displacement (e.g. 2.0) |
+| mileage | integer | Mileage in km |
+| price | integer | Price in EUR |
+| url | string (unique) | Link to original listing |
+| image_url | string | Photo URL |
+| country | string(2) | LV / EE / LT |
