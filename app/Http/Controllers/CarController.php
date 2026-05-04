@@ -9,56 +9,34 @@ class CarController extends Controller{
 
     public function index(Request $request)
     {
-        $search    = $request->input('search');
-        $brand     = $request->input('brand');
-        $model     = $request->input('model');
-        $yearFrom  = $request->input('year_from');
-        $yearTo    = $request->input('year_to');
-        $priceFrom = $request->input('price_from');
-        $priceTo   = $request->input('price_to');
-        $country   = $request->input('country');
-        $sort      = $request->input('sort', 'newest');
+        $sort    = $request->input('sort', 'newest');
+        $search  = $request->input('search');
+        $country = $request->input('country');
 
         $sortOptions = [
-            'newest'          => ['created_at', 'desc'],
-            'price_asc'       => ['price',      'asc'],
-            'price_desc'      => ['price',      'desc'],
-            'mileage_asc'     => ['mileage',    'asc'],
-            'mileage_desc'    => ['mileage',    'desc'],
-            'year_desc'       => ['year',       'desc'],
-            'year_asc'        => ['year',       'asc'],
+            'newest'       => ['created_at', 'desc'],
+            'price_asc'    => ['price',      'asc'],
+            'price_desc'   => ['price',      'desc'],
+            'mileage_asc'  => ['mileage',    'asc'],
+            'mileage_desc' => ['mileage',    'desc'],
+            'year_desc'    => ['year',       'desc'],
+            'year_asc'     => ['year',       'asc'],
         ];
 
         [$sortColumn, $sortDirection] = $sortOptions[$sort] ?? $sortOptions['newest'];
 
-        $cars = Car::query()
-            ->when($search, function ($q) use ($search) {
-                $q->where(function ($q) use ($search) {
-                    $q->where('brand', 'like', "%{$search}%")
-                      ->orWhere('model', 'like', "%{$search}%")
-                      ->orWhere('year', 'like', "%{$search}%")
-                      ->orWhere('engine_size', 'like', "%{$search}%")
-                      ->orWhere('price', 'like', "%{$search}%");
-                });
-            })
-            ->when($brand,     fn($q) => $q->where('brand', 'like', "%{$brand}%"))
-            ->when($model,     fn($q) => $q->where('model', 'like', "%{$model}%"))
-            ->when($yearFrom,  fn($q) => $q->where('year', '>=', $yearFrom))
-            ->when($yearTo,    fn($q) => $q->where('year', '<=', $yearTo))
-            ->when($priceFrom, fn($q) => $q->where('price', '>=', $priceFrom))
-            ->when($priceTo,   fn($q) => $q->where('price', '<=', $priceTo))
-            ->when($country,   fn($q) => $q->where('country', $country))
-            ->orderBy($sortColumn, $sortDirection)
-            ->paginate(20);
+        $cars = Car::filter($request->only([
+            'search', 'brand', 'model', 'year_from', 'year_to', 'price_from', 'price_to', 'country',
+        ]))->orderBy($sortColumn, $sortDirection)->paginate(20);
 
-        return view('cars.index', compact('cars', 'search', 'sort', 'country'));
+        return view('cars.index', ['cars' => $cars, 'search' => $search, 'sort' => $sort, 'country' => $country]);
     }
 
     public function show($id)
     {
         $car = Car::findOrFail($id);
 
-        return view('cars.show', compact('car'));
+        return view('cars.show', ['car' => $car]);
     }
 
 }
