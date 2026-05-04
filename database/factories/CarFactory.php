@@ -31,6 +31,7 @@ class CarFactory extends Factory
             'price' => fake()->numberBetween(1000, 13000),
             'url' => fake()->unique()->url() . "cars/{$brand}/{$model}/" . fake()->uuid(),
             'image_url' => 'https://picsum.photos/seed/' . fake()->unique()->word() . '/640/360',
+            'country' => fake()->randomElement(['LV', 'EE', 'LT']),
         ];
     }
 }
