@@ -23,7 +23,7 @@ A used car aggregator for the Baltic region. Aggregates listings from SS.com (La
 | Backend | Laravel 11 (PHP) |
 | Frontend | Blade templates + Tailwind CSS v4 |
 | Database | MySQL |
-| Scraper | Python (see `/scraper`) |
+| Scraper | Python (https://github.com/DavsCavs/webscraper_testing) |
 
 ---
 
@@ -66,7 +66,7 @@ php artisan migrate
 php artisan serve
 ```
 
-Then populate the database by running the scraper (see `/scraper/README.md`).
+Then populate the database by running the scraper (see https://github.com/DavsCavs/webscraper_testing/README.md).
 
 ---
 

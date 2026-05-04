@@ -9,18 +9,18 @@ class CarController extends Controller{
 
     public function index(Request $request)
     {
-        $sort    = $request->input('sort', 'newest');
-        $search  = $request->input('search');
+        $sort = $request->input('sort', 'newest');
+        $search = $request->input('search');
         $country = $request->input('country');
 
         $sortOptions = [
-            'newest'       => ['created_at', 'desc'],
-            'price_asc'    => ['price',      'asc'],
-            'price_desc'   => ['price',      'desc'],
-            'mileage_asc'  => ['mileage',    'asc'],
-            'mileage_desc' => ['mileage',    'desc'],
-            'year_desc'    => ['year',       'desc'],
-            'year_asc'     => ['year',       'asc'],
+            'newest' => ['created_at', 'desc'],
+            'price_asc' => ['price', 'asc'],
+            'price_desc' => ['price', 'desc'],
+            'mileage_asc' => ['mileage', 'asc'],
+            'mileage_desc' => ['mileage', 'desc'],
+            'year_desc' => ['year', 'desc'],
+            'year_asc' => ['year', 'asc'],
         ];
 
         [$sortColumn, $sortDirection] = $sortOptions[$sort] ?? $sortOptions['newest'];
